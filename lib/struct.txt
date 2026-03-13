@@ -1,0 +1,129 @@
+ChatGPT Structure
+
+my_os_project/
+│
+├── pubspec.yaml
+├── README.md
+│
+├── assets/
+│   │
+│   ├── icons/
+│   │   ├── apps/
+│   │   │   ├── settings.png
+│   │   │   ├── files.png
+│   │   │   └── browser.png
+│   │   │
+│   │   └── system/
+│   │       ├── battery.png
+│   │       ├── wifi.png
+│   │       └── notification.png
+│   │
+│   ├── wallpapers/
+│   │   ├── default.png
+│   │   └── dark.png
+│   │
+│   ├── fonts/
+│   │   ├── os_regular.ttf
+│   │   └── os_bold.ttf
+│   │
+│   ├── sounds/
+│   │   ├── click.mp3
+│   │   ├── notification.mp3
+│   │   └── startup.mp3
+│   │
+│   └── animations/
+│       ├── boot.json
+│       └── loading.json
+│
+└── lib/
+    │
+    ├── main.dart
+    │
+    ├── boot/
+    │   ├── boot_screen.dart
+    │   ├── boot_loader.dart
+    │   └── boot_animation.dart
+    │
+    ├── core/
+    │   │
+    │   ├── system/
+    │   │   ├── os_controller.dart
+    │   │   ├── app_registry.dart
+    │   │   └── permissions.dart
+    │   │
+    │   ├── theme/
+    │   │   ├── theme.dart
+    │   │   └── colors.dart
+    │   │
+    │   └── utils/
+    │       └── helpers.dart
+    │
+    ├── models/
+    │   ├── os_app.dart
+    │   ├── window_state.dart
+    │   ├── notification.dart
+    │   └── user_settings.dart
+    │
+    ├── state/
+    │   ├── os_state.dart
+    │   ├── window_state.dart
+    │   └── notification_state.dart
+    │
+    ├── constants/
+    │   ├── icon_paths.dart
+    │   ├── system_sizes.dart
+    │   └── os_constants.dart
+    │
+    ├── config/
+    │   └── os_config.dart
+    │
+    ├── services/
+    │   ├── notification_service.dart
+    │   ├── storage_service.dart
+    │   └── app_launcher.dart
+    │
+    ├── api/
+    │   ├── os_api.dart
+    │   ├── filesystem_api.dart
+    │   └── notification_api.dart
+    │
+    ├── ui/
+    │   │
+    │   ├── desktop/
+    │   │   ├── desktop_screen.dart
+    │   │   ├── app_icon.dart
+    │   │   └── status_bar.dart
+    │   │
+    │   ├── windows/
+    │   │   ├── window.dart
+    │   │   └── window_manager.dart
+    │   │
+    │   └── widgets/
+    │       ├── os_button.dart
+    │       └── os_dialog.dart
+    │
+    ├── widgets/
+    │   └── system/
+    │       ├── system_button.dart
+    │       ├── system_card.dart
+    │       └── system_tile.dart
+    │
+    ├── apps/
+    │   ├── browser/
+    │   │   └── browser_app.dart
+    │   │
+    │   └── gallery/
+    │       └── gallery_app.dart
+    │
+    └── system_apps/
+        ├── launcher/
+        │   └── launcher_app.dart
+        │
+        ├── settings/
+        │   └── settings_app.dart
+        │
+        ├── files/
+        │   └── files_app.dart
+        │
+        └── terminal/
+            └── terminal_app.dart
