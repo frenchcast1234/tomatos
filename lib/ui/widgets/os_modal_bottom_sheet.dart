@@ -21,7 +21,12 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
     return Container(
       decoration: BoxDecoration(
         color: widget.bgColor,
-        borderRadius: BorderRadius.only(topLeft: Radius.circular(16.0), topRight: Radius.circular(16.0))
+        borderRadius: BorderRadius.only(topLeft: Radius.circular(16.0), topRight: Radius.circular(16.0)),
+        border: Border(
+          left: BorderSide(
+            
+          )
+        )
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,

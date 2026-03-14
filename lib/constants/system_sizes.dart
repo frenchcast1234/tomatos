@@ -6,6 +6,9 @@ Map<String, Map<String, double>> sizes = {
   "status-bar-bottom-divider": {
     "width": double.infinity,
     "height": 2.0
+  },
+  "divider": {
+    "width": 2.0
   }
 };
 

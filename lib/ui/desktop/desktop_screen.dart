@@ -17,6 +17,7 @@ class _DesktopScreenState extends State<DesktopScreen> {
   late Timer _timer;
   final Battery _battery = Battery();
   int _batteryLevel = 100;
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -60,6 +61,7 @@ class _DesktopScreenState extends State<DesktopScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       backgroundColor: getColor("background-color"),
       appBar: AppBar(
         title: Row(
@@ -109,7 +111,7 @@ class _DesktopScreenState extends State<DesktopScreen> {
                 ),
               ),
             );
-          }
+          } 
         },
         child: Container(color: Colors.transparent), // besoin d’un child pour GestureDetector
       )
