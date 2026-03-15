@@ -19,7 +19,7 @@ class _MainAppState extends State<MainApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        fontFamily: 'Inter'
+        fontFamily: 'Inter',
       ),
       home: DesktopScreen()
     );

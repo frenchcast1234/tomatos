@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:tomat_os/ui/widgets/os_modal_bottom_sheet.dart';
 import 'package:tomat_os/core/theme/colors.dart';
+import 'package:tomat_os/ui/widgets/os_text_input.dart';
+import 'package:tomat_os/constants/system_sizes.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Launcher extends StatefulWidget {
   const Launcher({super.key});
@@ -22,17 +25,27 @@ class _LauncherState extends State<Launcher> {
             isScrollControlled: true, // permet de s’adapter au contenu
             builder: (context) => ModalBottomSheet(
               bgColor: getColor("background-color"),
-              content: Center(
-                child: Text(
-                  'Hello world!',
-                  style: TextStyle(color: getColor("text-ui-color")),
-                ),
-              ),
+              content: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  TextInput(
+
+                  ),
+                  // SizedBox(height: getSizeOf("space-between-buttons", "height")),
+                ],
+              )
             ),
           );
         } 
       },
-      child: Container(color: Colors.transparent), // besoin d’un child pour GestureDetector
+      child: Center(
+        child: SvgPicture.asset(
+          'assets/icons/system/uni-logo.svg',
+          height: 512.0,
+          width: 512.0,
+          colorFilter: ColorFilter.mode(getColor("divider-color"), BlendMode.srcIn),
+        )
+      ), 
     );
   }
 }
