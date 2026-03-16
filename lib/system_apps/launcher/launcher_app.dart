@@ -4,6 +4,7 @@ import 'package:tomat_os/core/theme/colors.dart';
 import 'package:tomat_os/ui/widgets/os_text_input.dart';
 import 'package:tomat_os/constants/system_sizes.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tomat_os/ui/windows/window_manager.dart';
 
 class Launcher extends StatefulWidget {
   const Launcher({super.key});
@@ -16,8 +17,8 @@ class _LauncherState extends State<Launcher> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onPanEnd: (details) {
-        if (details.velocity.pixelsPerSecond.dy < 0) {
+      onVerticalDragEnd: (details) {
+        if (details.primaryVelocity! < 0) {
           // Swipe vers le bas → ouvrir bottom sheet
           showModalBottomSheet(
             context: context,
@@ -29,22 +30,29 @@ class _LauncherState extends State<Launcher> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   TextInput(
-
+                    onOk: (value) {
+                      addWindow(value);
+                    }
                   ),
-                  // SizedBox(height: getSizeOf("space-between-buttons", "height")),
+                  SizedBox(height: getSizeOf("space-between-buttons", "height")),
                 ],
               )
             ),
           );
         } 
       },
-      child: Center(
-        child: SvgPicture.asset(
-          'assets/icons/system/uni-logo.svg',
-          height: 512.0,
-          width: 512.0,
-          colorFilter: ColorFilter.mode(getColor("divider-color"), BlendMode.srcIn),
-        )
+      child: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        color: Colors.transparent,
+        child: Center(
+          child: SvgPicture.asset(
+            'assets/icons/system/logob.svg',
+            height: 512.0,
+            width: 512.0,
+            colorFilter: ColorFilter.mode(getColor("divider-color"), BlendMode.srcIn),
+          )
+        ),
       ), 
     );
   }

@@ -1,31 +1,41 @@
+import 'dart:io' show Platform;
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:desktop_webview_window/desktop_webview_window.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 class WIndow extends StatefulWidget {
   final String url;
 
-  const WIndow({
-    super.key,
-    required this.url
-  });
+  const WIndow({super.key, required this.url});
 
   @override
   State<WIndow> createState() => _WIndowState();
 }
 
 class _WIndowState extends State<WIndow> {
-  late final WebViewController _controller;
+  InAppWebViewController? webViewController;
+  late String root;
 
   @override
   void initState() {
     super.initState();
-    _controller = WebViewController()
-      ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..loadRequest(Uri.parse(widget.url));
+    if (!widget.url.startsWith("https://")) {
+      root = "https://${widget.url}";
+    } else {
+      root = widget.url;
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return WebViewWidget(controller: _controller);
+    return InAppWebView(
+      initialUrlRequest: URLRequest(
+        url: WebUri(root),
+      ),
+      onWebViewCreated: (controller) {
+        webViewController = controller;
+      },
+    );
   }
 }

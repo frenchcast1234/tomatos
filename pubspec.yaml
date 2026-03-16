@@ -12,6 +12,8 @@ dependencies:
   flutter_svg: ^2.2.3
   battery_plus: ^7.0.0
   webview_flutter: ^4.13.1
+  desktop_webview_window: ^0.2.3
+  flutter_inappwebview: ^6.1.5
 
 dev_dependencies:
   flutter_test:
