@@ -13,6 +13,7 @@ class Desks extends StatefulWidget {
 
 class _DesksState extends State<Desks> {
   final ScrollController _desksController = ScrollController();
+  final ScrollController _appsController = ScrollController();
 
   @override
   void dispose() {
@@ -144,6 +145,63 @@ class _DesksState extends State<Desks> {
               ),
             ),
           ),
+        ),
+        Expanded(
+          child: ScrollbarTheme(
+            data: ScrollbarThemeData(
+              thumbColor: WidgetStateProperty.all(getColor("text-ui-color").withAlpha(128)),
+              thickness: WidgetStateProperty.all(4),
+              radius: const Radius.circular(8),
+            ),
+            child: (
+              Scrollbar(
+                thumbVisibility: false,
+                scrollbarOrientation: ScrollbarOrientation.bottom,
+                controller: _appsController,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  controller: _appsController,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Row(
+                      children: [
+                        Container(
+                          height: double.infinity,
+                          width: 300.0,
+                          color: Colors.red
+                        ),
+                        Container(
+                          height: double.infinity,
+                          width: 300.0,
+                          color: Colors.red
+                        ),
+                        Container(
+                          height: double.infinity,
+                          width: 300.0,
+                          color: Colors.red
+                        ),
+                        Container(
+                          height: double.infinity,
+                          width: 300.0,
+                          color: Colors.red
+                        ),
+                        Container(
+                          height: double.infinity,
+                          width: 300.0,
+                          color: Colors.red
+                        ),
+                        Container(
+                          height: double.infinity,
+                          width: 300.0,
+                          color: Colors.red
+                        )
+                      ],
+                    ),
+                  ),
+                )
+              )
+            ),
+          )
         )
       ],
     );
