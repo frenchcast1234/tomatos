@@ -1,3 +1,3 @@
 # tomat_os
 
-A new Flutter project.
+A new Flutter OS-like project.
