@@ -16,7 +16,7 @@ class DesktopScreen extends StatefulWidget {
 }
 
 class _DesktopScreenState extends State<DesktopScreen> {
-  final List _pages = [
+  final List<Widget> _pages = [
     Launcher(),
     CurrentApp(),
     Desks()
@@ -53,7 +53,10 @@ class _DesktopScreenState extends State<DesktopScreen> {
           ),
         ),
       ),
-      body: _pages[_pageIndex],
+      body: IndexedStack(
+        index: _pageIndex,
+        children: _pages,
+      ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           border: Border(
