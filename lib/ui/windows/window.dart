@@ -4,8 +4,9 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 class WIndow extends StatefulWidget {
   final String url;
+  final bool isVisible;
 
-  const WIndow({super.key, required this.url});
+  const WIndow({super.key, required this.url, this.isVisible = true});
 
   @override
   State<WIndow> createState() => _WIndowState();
@@ -39,13 +40,16 @@ class _WIndowState extends State<WIndow> {
             ),
           ),
         ),
-        InAppWebView(
-          initialUrlRequest: URLRequest(
-            url: WebUri(root),
+        Offstage(
+          offstage: !widget.isVisible,
+          child: InAppWebView(
+            initialUrlRequest: URLRequest(
+              url: WebUri(root),
+            ),
+            onWebViewCreated: (controller) {
+              webViewController = controller;
+            },
           ),
-          onWebViewCreated: (controller) {
-            webViewController = controller;
-          },
         ),
       ]
     );

@@ -53,10 +53,7 @@ class _DesktopScreenState extends State<DesktopScreen> {
           ),
         ),
       ),
-      body: IndexedStack(
-        index: _pageIndex,
-        children: _pages,
-      ),
+      body: _pages[_pageIndex],
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           border: Border(
