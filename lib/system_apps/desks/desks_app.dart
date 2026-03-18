@@ -150,7 +150,7 @@ class _DesksState extends State<Desks> {
           child: ScrollbarTheme(
             data: ScrollbarThemeData(
               thumbColor: WidgetStateProperty.all(getColor("text-ui-color").withAlpha(128)),
-              thickness: WidgetStateProperty.all(4),
+              thickness: WidgetStateProperty.all(8),
               radius: const Radius.circular(8),
             ),
             child: (
@@ -164,37 +164,16 @@ class _DesksState extends State<Desks> {
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Container(
-                          height: double.infinity,
-                          width: 300.0,
-                          color: Colors.red
-                        ),
-                        Container(
-                          height: double.infinity,
-                          width: 300.0,
-                          color: Colors.red
-                        ),
-                        Container(
-                          height: double.infinity,
-                          width: 300.0,
-                          color: Colors.red
-                        ),
-                        Container(
-                          height: double.infinity,
-                          width: 300.0,
-                          color: Colors.red
-                        ),
-                        Container(
-                          height: double.infinity,
-                          width: 300.0,
-                          color: Colors.red
-                        ),
-                        Container(
-                          height: double.infinity,
-                          width: 300.0,
-                          color: Colors.red
-                        )
+                        for(var k in deskApps[deskIdx]["apps"]) ...[
+                          Container(
+                            height: double.infinity,
+                            width: 300.0,
+                            child: AbsorbPointer(child: k),
+                          )
+                        ]
                       ],
                     ),
                   ),
