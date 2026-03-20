@@ -1,3 +1,5 @@
-# tomat_os
+# TomatOS 🍅 
 
-A new Flutter OS-like project.
+TomatOS is an OS-like app made with flutter.
+
+> Please do not use my project for any commercial purposes
