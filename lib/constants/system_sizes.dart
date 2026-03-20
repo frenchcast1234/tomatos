@@ -28,6 +28,9 @@ Map<String, Map<String, double>> sizes = {
     "height": 36.0,
     "width": double.infinity
   },
+  "spaceBetweenApps": {
+    "width": 16.0
+  }
 };
 
 double getSizeOf(String widget, String dim) {

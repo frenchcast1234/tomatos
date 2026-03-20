@@ -2,32 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:tomat_os/state/window_state.dart';
 import 'package:tomat_os/core/theme/colors.dart';
 
-class CurrentApp extends StatefulWidget {
+class CurrentApp extends StatelessWidget {
   const CurrentApp({super.key});
 
   @override
-  State<CurrentApp> createState() => _CurrentAppState();
-}
-
-class _CurrentAppState extends State<CurrentApp> {
-  @override
   Widget build(BuildContext context) {
-    final apps = deskApps[deskIdx]["apps"] as List?;
-    final current = deskApps[deskIdx]["current"] as int? ?? 0;
+    return ValueListenableBuilder<int>(
+      valueListenable: windowStateNotifier, // 👈 écoute les changements
+      builder: (context, _, __) {
+        final apps = deskApps[deskIdx]["apps"] as List?;
+        final current = deskApps[deskIdx]["current"] as int? ?? 0;
 
-    if (apps == null || apps.isEmpty || current >= apps.length) {
-      return Center(
-        child: Text(
-          'Ouvrez une application',
-          style: TextStyle(
-            color: getColor("divider-color"),
-            fontFamily: 'Inter',
-            fontSize: 32.0,
-          ),
-        ),
-      );
-    }
+        if (apps == null || apps.isEmpty || current >= apps.length) {
+          return SizedBox.expand(
+            child: Center(
+              child: Text(
+                'Ouvrez une application',
+                style: TextStyle(
+                  color: getColor("divider-color"),
+                  fontFamily: 'Inter',
+                  fontSize: 32.0,
+                ),
+              ),
+            ),
+          );
+        }
 
-    return apps[current];
+        return SizedBox.expand(
+          child: apps[current],
+        );
+      },
+    );
   }
 }

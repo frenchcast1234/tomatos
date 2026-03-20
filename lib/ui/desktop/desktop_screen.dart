@@ -16,18 +16,19 @@ class DesktopScreen extends StatefulWidget {
 }
 
 class _DesktopScreenState extends State<DesktopScreen> {
-  final List<Widget> _pages = [
-    Launcher(),
-    CurrentApp(),
-    Desks()
-  ]; 
   int _pageIndex = 0;
-  
+
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  @override
-  void dispose() {
-    super.dispose();
+  Widget _buildPage(int index, Widget page) {
+    return Offstage(
+      offstage: _pageIndex != index,
+      child: SizedBox(
+        width: double.infinity,
+        height: double.infinity,
+        child: page,
+      ),
+    );
   }
 
   @override
@@ -40,28 +41,36 @@ class _DesktopScreenState extends State<DesktopScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             BatteryText(),
-            TimeText()
+            TimeText(),
           ],
         ),
         toolbarHeight: getSizeOf("status_bar", "height"),
         backgroundColor: getColor("background-color"),
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(getSizeOf("status-bar-bottom-divider", "height")), 
+          preferredSize: Size.fromHeight(
+            getSizeOf("status-bar-bottom-divider", "height"),
+          ),
           child: Container(
             height: getSizeOf("status-bar-bottom-divider", "height"),
             color: getColor("divider-color"),
           ),
         ),
       ),
-      body: _pages[_pageIndex],
+      body: Stack(
+        children: [
+          _buildPage(0, const Launcher()),
+          _buildPage(1, const CurrentApp()),
+          _buildPage(2, const Desks()),
+        ],
+      ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           border: Border(
             top: BorderSide(
-              color: getColor("divider-color"), 
-              width: getSizeOf("divider", "width")
-            )
-          )
+              color: getColor("divider-color"),
+              width: getSizeOf("divider", "width"),
+            ),
+          ),
         ),
         height: 48.0,
         child: BottomNavigationBar(
@@ -71,19 +80,15 @@ class _DesktopScreenState extends State<DesktopScreen> {
           backgroundColor: getColor('background-color'),
           selectedFontSize: 0,
           unselectedFontSize: 0,
-          selectedIconTheme: IconThemeData(
-            size: 32.0
-          ),
-          unselectedIconTheme: IconThemeData(
-            size: 24.0
-          ),
-          selectedLabelStyle: TextStyle(
+          selectedIconTheme: const IconThemeData(size: 32.0),
+          unselectedIconTheme: const IconThemeData(size: 24.0),
+          selectedLabelStyle: const TextStyle(
             fontFamily: 'Inter',
-            fontWeight: FontWeight.bold
+            fontWeight: FontWeight.bold,
           ),
-          unselectedLabelStyle: TextStyle(
+          unselectedLabelStyle: const TextStyle(
             fontFamily: 'Inter',
-            fontWeight: FontWeight.normal
+            fontWeight: FontWeight.normal,
           ),
           onTap: (idx) {
             setState(() {
@@ -95,17 +100,17 @@ class _DesktopScreenState extends State<DesktopScreen> {
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.launch),
-              label: "Launcher"
+              label: "Launcher",
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.apps),
-              label: "App"
+              label: "App",
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.desk),
-              label: "Desks"
-            )
-          ]
+              label: "Desks",
+            ),
+          ],
         ),
       ),
     );
