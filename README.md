@@ -2,5 +2,8 @@
 
 TomatOS is an OS-like app made with flutter.
 
-> Please do not use my project for any commercial purposes  
-> If you use my project, please credit me
+> Please do not use my project for any commercial purposes.  
+> If you use my project, please credit me.
+
+> [!WARNING]
+> I started using Linux, but the webview plugin doesn't work in this OS.
